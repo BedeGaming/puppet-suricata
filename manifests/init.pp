@@ -102,6 +102,7 @@ class suricata (
   Stdlib::Absolutepath $bin_path,
   Boolean $basic_configuration_enabled,
   Boolean $configure_epel,
+  Boolean $update_rules,
   String $ppa_source,
   Variant[String, Boolean] $interfaces  = split($::interfaces, ',')[0],
   Optional[String] $cmd_options = undef,
@@ -111,6 +112,7 @@ class suricata (
   Optional[Array] $classification_config = [],
   Optional[Array] $reference_config      = [],
   Optional[Hash] $threshold_config       = {},
+  Optional[String] $update_disabled_rules= "",
     ### STOP Hiera lookups ###
 
 ) {
@@ -130,8 +132,10 @@ class suricata (
   contain ::suricata::install
   contain ::suricata::config
   contain ::suricata::service
+  contain ::suricata::suricata_update_rules
 
   Class['::suricata::install']->
   Class['::suricata::config']~>
-  Class['::suricata::service']
+  Class['::suricata::service']->
+  Class['::suricata::suricata_update_rules']
 }

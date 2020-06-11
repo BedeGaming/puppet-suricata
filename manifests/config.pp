@@ -20,8 +20,9 @@ class suricata::config {
   file { [$::suricata::config_dir, "${::suricata::config_dir}/rules", "${::suricata::config_dir}/lua-output", $::suricata::log_dir]:
     ensure  => directory,
     owner   => $::suricata::user,
+    recurse => true,
     group   => 'root',
-    mode    => '0755',
+    mode    => '0644',
     require => $usr_require,
     before  => File["${::suricata::config_dir}/${::suricata::config_name}"],
   }

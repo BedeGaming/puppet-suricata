@@ -15,6 +15,7 @@ suricata::group: "suricata"
 suricata::basic_configuration_enabled: true
 suricata::configure_epel: false
 suricata::ppa_source: undef
+suricata::update_rules: true
 suricata::basic_classification_config:
   - "not-suspicious,Not Suspicious Traffic,3"
   - "unknown,Unknown Traffic,3"
