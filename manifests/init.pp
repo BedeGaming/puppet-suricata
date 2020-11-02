@@ -104,6 +104,7 @@ class suricata (
   Boolean $configure_epel,
   Boolean $update_rules,
   String $ppa_source,
+  String $custom_rules = "",
   Variant[String, Boolean] $interfaces  = split($::interfaces, ',')[0],
   Optional[String] $cmd_options = undef,
 
@@ -133,6 +134,7 @@ class suricata (
   contain ::suricata::config
   contain ::suricata::service
   contain ::suricata::suricata_update_rules
+  contain ::suricata::custom_rules
 
   Class['::suricata::install']->
   Class['::suricata::config']~>
