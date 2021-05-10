@@ -32,7 +32,7 @@ class suricata::suricata_update_rules {
       owner   => 'root',
       group   => 'root',
       mode    => '0600',
-      content => "# This file is managed by Puppet. DO NOT EDIT.\n\n 0 1 * * *   root  suricata-update --reload-command='suricatasc -c ruleset-reload-nonblocking'",
+      content => "# This file is managed by Puppet. DO NOT EDIT.\n\n 0 1 * * *   $::suricata::user  suricata-update --reload-command='suricatasc -c ruleset-reload-nonblocking'",
     } 
 
 
@@ -42,6 +42,7 @@ class suricata::suricata_update_rules {
         File['/etc/cron.d/suricata-rules-updates'], 
       ],
       refreshonly => true,
+      user        => $::suricata::user,
     }
   }
 
