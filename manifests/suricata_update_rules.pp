@@ -3,7 +3,7 @@ class suricata::suricata_update_rules {
   if $::suricata::update_rules {
     file { "${::suricata::config_dir}/disable.conf":
       ensure  => present,
-      owner   => 'root',
+      owner   => $::suricata::user,
       group   => 'root',
       mode    => '0600',
       content => "# This file is managed by Puppet. DO NOT EDIT.\n\n${::suricata::update_disabled_rules}",

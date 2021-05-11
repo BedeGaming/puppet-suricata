@@ -9,6 +9,32 @@ suricata::service_ensure: "running"
 suricata::service_enable: true
 suricata::service_provider: "systemd"
 
+suricata::updates::config_dir: "/var/lib/suricata/update/sources/"
+
+suricata::updates::sources:
+  oisf/trafficid:
+    ensure: 'absent'
+  sslbl/ja3-fingerprints:
+    ensure: 'absent'
+  et/open:
+    ensure: 'absent'
+  scwx/security:
+    ensure: 'absent'
+  scwx/malware:
+    ensure: 'absent'
+  et/pro:
+    ensure: 'absent'
+  ptresearch/attackdetection:
+    ensure: 'absent'
+  sslbl/ssl-fp-blacklist:
+    ensure: 'absent'
+  tgreen/hunting:
+    ensure: 'absent'
+  scwx/enhanced:
+    ensure: 'absent'
+  etnetera/aggressive:
+    ensure: 'absent'
+
 suricata::manage_user: true
 suricata::user: "suricata"
 suricata::group: "suricata"
