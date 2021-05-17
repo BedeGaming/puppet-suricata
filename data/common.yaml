@@ -9,8 +9,6 @@ suricata::service_ensure: "running"
 suricata::service_enable: true
 suricata::service_provider: "systemd"
 
-suricata::updates::config_dir: "/var/lib/suricata/update/sources/"
-
 suricata::updates::sources:
   oisf/trafficid:
     ensure: 'absent'
