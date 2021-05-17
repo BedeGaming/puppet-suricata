@@ -10,7 +10,7 @@ define suricata::updates (
 
   $update_source_filename = regsubst($name, '/', '-', 'G')
 
-  file { "${config_root}/update", "${config_root}/update/sources":
+  file { [ "${config_root}/update", "${config_root}/update/sources" ]:
     ensure => directory,
     owner  => 'root',
     group  => $::suricata::group,
