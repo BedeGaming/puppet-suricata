@@ -63,4 +63,12 @@ class suricata::config {
     content => epp('suricata/threshold.config.epp'),
     require => $usr_require,
   }
+
+  file { ["/var/lib/suricata", "/var/lib/suricata/update", "/var/lib/suricata/update/sources"]:
+    ensure  => directory,
+    owner   => $::suricata::user,
+    group   => 'root',
+    mode    => '0755',
+    require => $usr_require,
+  }
 }

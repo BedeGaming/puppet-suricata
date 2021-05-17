@@ -18,7 +18,7 @@ class suricata::suricata_update_rules {
         require => $usr_require,
       }
 
-      file { ["/var/lib/suricata", "/var/lib/suricata/rules"]:
+      file { "/var/lib/suricata/rules":
         ensure  => directory,
         owner   => $::suricata::user,
         group   => 'root',
